@@ -6,15 +6,15 @@
 #Invoke-Command -ComputerName $target -ScriptBlock {Import-Module PSWindowsUpdate; Enable-WURemoting}
 # Now, you can easily share windows update details and actions among client computers
 
-. C:\Users\-sysop-5427ek\Desktop\patching\utilities.ps1
+. C:\Users\Desktop\patching\utilities.ps1
 
 #servers names
 $app1 = "" #master server
 #$app2 = ""
 $ssas = "" #worker server
 
-$logfile = "C:\Users\-sysop-5427ek\Desktop\New folder\LogFolder\logfile.log" #Logfile full address
-$windows_logs = "C:\Users\-sysop-5427ek\Desktop\New folder\LogFolder" # Folder for storing windows updates logs
+$logfile = "C:\Users\Desktop\New folder\LogFolder\logfile.log" #Logfile full address
+$windows_logs = "C:\Users\Desktop\New folder\LogFolder" # Folder for storing windows updates logs
 
 function start-updates-process()
 {
@@ -62,10 +62,10 @@ function start-updates-process()
 
         # Take the backup of service logs
         Log-Write -LogFile $logfile -Text "Taking the service logs backup for $app1 server" -Type "INFO"
-        take-remote-backup -computer $app1 -from "C:\Users\-sysop-5427ek\Desktop\New folder\testing_for_backup" -to "C:\Users\-sysop-5427ek\Desktop\New folder\testing_for_backup\logs_backup" -pattern "*.txt,*log,*.gz" # Should be able to take more than 1 pattersn
+        take-remote-backup -computer $app1 -from "C:\Users\Desktop\New folder\testing_for_backup" -to "C:\Users\Desktop\New folder\testing_for_backup\logs_backup" -pattern "*.txt,*log,*.gz" # Should be able to take more than 1 pattersn
         Log-Write -LogFile $logfile -Text "Done!" -Type "INFO"
         Log-Write -LogFile $logfile -Text "Taking the service logs backup for $ssas server" -Type "INFO"
-        take-remote-backup -computer $ssas -from "C:\Users\-sysop-5427ek\Desktop\New folder\testing_for_backup" -to "C:\Users\-sysop-5427ek\Desktop\New folder\testing_for_backup\logs_backup" -pattern "*.txt,*log,*.gz"
+        take-remote-backup -computer $ssas -from "C:\Users\Desktop\New folder\testing_for_backup" -to "C:\Users\Desktop\New folder\testing_for_backup\logs_backup" -pattern "*.txt,*log,*.gz"
         Log-Write -LogFile $logfile -Text "Done!" -Type "INFO"
 
 
